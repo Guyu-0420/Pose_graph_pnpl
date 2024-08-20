@@ -1,0 +1,49 @@
+创建 Conda 环境：
+conda create -n vio python=3.12
+conda activate vio
+
+安装 Boost：
+conda install -c conda-forge boost
+
+安装 VTK：
+conda install -c conda-forge vtk
+
+安装sudo apt-get install -y libjpeg-dev libpng-dev libtiff-dev的conda替换版本：
+conda install -c conda-forge libjpeg-turbo
+conda install -c conda-forge libpng
+conda install -c conda-forge libtiff
+
+安装GTSAM：
+
+ParMETIS：Conda 提供了 ParMETIS 的包。
+ATLAS：Conda 提供了 ATLAS 的包。
+gfortran：Conda 提供了 GNU Fortran 编译器的包
+
+conda install -c conda-forge parmetis
+conda install -c conda-forge atlas
+conda install -c conda-forge gfortran
+
+对于 GTK+，Conda 不提供开发文件的包。如果您需要 GTK+ 的开发文件，您可能需要在系统级别安装。如果您的项目只需要运行时库，您可以安装 Conda 提供的 GTK+ 包：
+conca install -c conda-forge gtk
+
+安装OpenCV，需要 CMake、VTK 和 TBB
+conda install -c conda-forge cmake
+conda install -c conda-forge vtk
+conda install -c conda-forge tbb  # 如果需要 TBB
+
+获取 OpenCV 源代码：克隆 OpenCV 的 Git 仓库，并切换到所需的标签。
+git clone https://github.com/opencv/opencv.git
+cd opencv
+git checkout tags/4.2  # 3.4 或更高版本应该都可以
+
+构建 OpenCV：创建构建目录，并运行 CMake 来配置构建。
+mkdir build
+cd build
+cmake -DWITH_VTK=ON -DWITH_TBB=ON ..  # 如果需要 TBB
+
+构建并安装 OpenCV：运行 make 命令来构建 OpenCV，并运行 make install 命令来安装。
+make -j$(nproc)
+make install
+
+算了感觉改不好，直接跟着github弄吧
+github安装环境太复杂了 换一个吧
